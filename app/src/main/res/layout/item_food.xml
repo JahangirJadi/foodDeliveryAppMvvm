@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class="ItemFoodBinding">
+
+        <import type="com.example.fooddeliveryapp.BindingUtils" />
+
+        <variable
+            name="food"
+            type="com.example.fooddeliveryapp.data.remote.CategoryDetailsResponse" />
+    </data>
+
+
+
+
+   <androidx.cardview.widget.CardView
+       app:cardUseCompatPadding="true"
+       app:cardElevation="8dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <LinearLayout
+           android:paddingBottom="24dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <com.makeramen.roundedimageview.RoundedImageView
+               android:id="@+id/iv_food"
+               android:layout_width="match_parent"
+               android:layout_height="280dp"
+               app:imageUrl="@{food.img_url}"
+               android:scaleType="centerCrop"
+                />
+
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="24dp"
+               android:layout_marginTop="24dp"
+               android:text="@{food.menu_title}"
+               android:textColor="@color/black"
+               android:textSize="24sp"
+               android:textStyle="bold" />
+
+           <TextView
+
+               android:id="@+id/tv_food_desc"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="24dp"
+               android:layout_marginTop="8dp"
+               android:text="@{food.description}"
+               android:textSize="14sp" />
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="24dp"
+               android:layout_marginTop="32dp"
+               android:orientation="horizontal"
+               android:weightSum="2">
+
+               <TextView
+                   android:id="@+id/tv_size_desc"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_weight="1.2"
+                   android:text="@{food.size}"
+                   android:textSize="14sp" />
+
+
+               <TextView
+
+                   android:id="@+id/tv_food_price"
+                   android:layout_width="0dp"
+                   android:layout_height="48dp"
+                   android:layout_gravity="center"
+                   android:layout_marginEnd="24dp"
+                   android:layout_weight="0.6"
+                   android:background="@drawable/round_btn"
+                   android:gravity="center"
+                   android:text="@{food.price.toString()}"
+                   android:textColor="@color/white"
+                   android:textSize="20sp" />
+
+
+           </LinearLayout>
+
+
+       </LinearLayout>
+
+   </androidx.cardview.widget.CardView>
+
+</layout>
