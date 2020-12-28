@@ -7,12 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.fooddeliveryapp.R
 import com.example.fooddeliveryapp.data.network.FoodApi
 import com.example.fooddeliveryapp.data.repositories.FoodRepository
+import com.example.fooddeliveryapp.ui.home.cart.CartFragment
 import com.google.android.material.slider.Slider
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -21,6 +24,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var factory: FoodViewModelFactory
     private lateinit var viewModel: MainViewModel
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +34,17 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        navController = Navigation.findNavController(view)
+
+
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
 
         val api = FoodApi()
         val repository = FoodRepository(api)
@@ -52,22 +65,35 @@ class HomeFragment : Fragment() {
             }
 
 
-            imageList.add(SlideModel(food.promotionsResponse.get(0).img_url,ScaleTypes.CENTER_CROP))
-            imageList.add(SlideModel(food.promotionsResponse.get(1).img_url,ScaleTypes.CENTER_CROP))
-            imageList.add(SlideModel(food.promotionsResponse.get(2).img_url,ScaleTypes.CENTER_CROP))
+            imageList.add(
+                SlideModel(
+                    food.promotionsResponse.get(0).img_url,
+                    ScaleTypes.CENTER_CROP
+                )
+            )
+            imageList.add(
+                SlideModel(
+                    food.promotionsResponse.get(1).img_url,
+                    ScaleTypes.CENTER_CROP
+                )
+            )
+            imageList.add(
+                SlideModel(
+                    food.promotionsResponse.get(2).img_url,
+                    ScaleTypes.CENTER_CROP
+                )
+            )
 
             image_slider.setImageList(imageList)
 
+            fab_cart.setOnClickListener {
+                navController.navigate(R.id.main_fragment_to_cart)
 
+            }
         })
 
 
-
     }
-
-
-
-
 
 
 //    override fun onRecyclerViewItemClick(view: View, food: Movie) {

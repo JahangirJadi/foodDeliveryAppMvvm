@@ -9,5 +9,21 @@
         android:id="@+id/homeFragment"
         android:name="com.example.fooddeliveryapp.ui.home.HomeFragment"
         android:label="fragment_home2"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+    <action android:id="@+id/main_fragment_to_cart"
+        app:destination="@+id/cartFragment"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.fooddeliveryapp.ui.home.cart.CartFragment"
+        android:label="cart_fragment"
+        tools:layout="@layout/cart_fragment" />
 </navigation>

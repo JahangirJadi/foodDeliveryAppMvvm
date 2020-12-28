@@ -2,9 +2,8 @@ package com.example.fooddeliveryapp.viewHolder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fooddeliveryapp.data.remote.CategoryDetailsResponse
-import com.example.fooddeliveryapp.databinding.ItemFoodBinding
 
-class FoodViewHolder(var mFoodBinding: ItemFoodBinding) :
+class FoodViewHolder(var mFoodBinding: com.example.fooddeliveryapp.databinding.ItemFoodBinding) :
 
     RecyclerView.ViewHolder(mFoodBinding.root) {
 
