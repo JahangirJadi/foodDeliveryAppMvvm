@@ -80,6 +80,10 @@ dependencies {
 
     implementation 'com.jaeger.statusbarutil:library:1.4.0'
 
+    // Room dependency
+    def room_version = "2.1.0-alpha06"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     def nav_version = "2.1.0-alpha05"
     implementation "androidx.navigation:navigation-fragment:$nav_version" // For Kotlin use navigation-fragment-ktx
